@@ -22,6 +22,9 @@ class LessGrailsResourceMapper {
   static defaultIncludes = [ '**/*.less' ]
 
   def map(resource, config) {
+      if (!resource?.id)
+        return
+
       if (resource.id.startsWith("bundle-"))  {
         log.debug("ignoring bundle: $resource.processedFile")
         return ;
